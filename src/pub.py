@@ -28,6 +28,6 @@ class Pub:
     def sell_drink(self, customer, drink):
         customer.reduce_wallet(drink)
         customer.add_to_stomach(drink)
-        customer.stomach_count()
+        customer.bought_drink(drink)
         self.increase_till(drink)
         self.remove_drink(drink)

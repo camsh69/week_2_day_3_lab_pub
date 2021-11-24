@@ -38,6 +38,6 @@ class TestPub(unittest.TestCase):
         self.pub.add_drinks(drink, 5)
         self.pub.sell_drink(customer, drink)
         self.assertEqual(46.00, customer.wallet)
-        self.assertEqual(1, customer.stomach_count())
+        self.assertEqual(1, customer.drink_count())
         self.assertEqual(104.00, self.pub.till)
         self.assertEqual(4, self.pub.check_stock(drink.name))

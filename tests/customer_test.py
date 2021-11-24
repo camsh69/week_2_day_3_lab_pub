@@ -13,6 +13,11 @@ class TestCustomer(unittest.TestCase):
         self.customer.reduce_wallet(drink)
         self.assertEqual(47.00, self.customer.wallet)
 
+    def test_customer_bought_a_drink(self):
+        drink = Drink("IPA", 3.00, True)
+        self.customer.bought_drink(drink)
+        self.assertEqual(1,self.customer.drink_count())
+
     def test_is_stomach_empty(self):
         self.assertEqual(0, self.customer.stomach_count())
 
