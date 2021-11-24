@@ -11,3 +11,7 @@ class TestPub(unittest.TestCase):
     def test_pub_has_name(self):
         self.assertEqual("The Prancing Pony", self.pub.name)    
 
+    def test_increase_till_when_drink_sold(self):
+        drink = Drink("stout", 4.00, True)
+        self.pub.increase_till(drink)
+        self.assertEqual(104.00,self.pub.till)

@@ -3,4 +3,6 @@ class Pub:
         self.name = name
         self.till = till
         self.drinks = drinks
-        
+
+    def increase_till(self,drink):
+        self.till += drink.price 
