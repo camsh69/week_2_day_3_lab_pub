@@ -6,7 +6,7 @@ from src.drink import Drink
 class TestCustomer(unittest.TestCase):
 
     def setUp(self):
-        self.customer = Customer("Joe Bloggs", 50.00)
+        self.customer = Customer("Joe Bloggs", 50.00, 20)
 
     def test_reduce_wallet_if_drink_bought(self):
         drink = Drink("IPA", 3.00, True)

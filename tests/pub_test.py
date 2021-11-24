@@ -32,8 +32,8 @@ class TestPub(unittest.TestCase):
         self.pub.remove_drink(drink)
         self.assertEqual(4, self.pub.check_stock(drink.name))
 
-    def test_sell_drink_to_customer(self):
-        customer = Customer("Joe Bloggs", 50.00)
+    def test_sell_drink_to_customer_over_18(self):
+        customer = Customer("Joe Bloggs", 50.00, 20)
         drink = Drink("stout", 4.00, True)
         self.pub.add_drinks(drink, 5)
         self.pub.sell_drink(customer, drink)
@@ -41,3 +41,21 @@ class TestPub(unittest.TestCase):
         self.assertEqual(1, customer.drink_count())
         self.assertEqual(104.00, self.pub.till)
         self.assertEqual(4, self.pub.check_stock(drink.name))
+
+    def test_sell_drink_to_customer_under_18(self):
+        customer = Customer("Joe Bloggs", 50.00, 17)
+        drink = Drink("Sprite", 4.00, False)
+        self.pub.add_drinks(drink, 5)
+        self.pub.sell_drink(customer, drink)
+        self.assertEqual(46.00, customer.wallet)
+        self.assertEqual(1, customer.drink_count())
+        self.assertEqual(104.00, self.pub.till)
+        self.assertEqual(4, self.pub.check_stock(drink.name))
+
+    def test_sell_drink_to_customer_under_18(self):
+        customer = Customer("Joe Bloggs", 50.00, 17)
+        drink = Drink("Lager", 4.00, True)
+        self.pub.add_drinks(drink, 5)
+        self.pub.sell_drink(customer, drink)
+        self.assertEqual("Sorry, you're too young for booze", self.pub.sell_drink(drink,customer))
+        

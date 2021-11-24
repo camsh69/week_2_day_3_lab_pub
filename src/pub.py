@@ -25,9 +25,17 @@ class Pub:
             if item["name"] == drink.name:
                 item["amount"] -= 1
 
+    def under_age_message(self):
+        return "Sorry, you're too young for booze"
+
     def sell_drink(self, customer, drink):
-        customer.reduce_wallet(drink)
-        customer.add_to_stomach(drink)
-        customer.bought_drink(drink)
-        self.increase_till(drink)
-        self.remove_drink(drink)
+        if self.check_stock(drink.name):
+            if customer.age < 18 and drink.alcoholic_status == True:
+                self.under_age_message()
+            else:
+                customer.reduce_wallet(drink)
+                customer.add_to_stomach(drink)
+                customer.bought_drink(drink)
+                self.increase_till(drink)
+                self.remove_drink(drink)
+        return "Sorry out of stock"
