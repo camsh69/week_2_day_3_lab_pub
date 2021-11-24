@@ -30,3 +30,4 @@ class Pub:
         customer.add_to_stomach(drink)
         customer.stomach_count()
         self.increase_till(drink)
+        self.remove_drink(drink)
