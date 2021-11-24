@@ -19,7 +19,15 @@ class TestCustomer(unittest.TestCase):
     # def test_number_of_drinks_in_stomach(self):
     #     drink = Drink("coca-cola", 2.00, False)
 
-    # def test_add_drink_to_stomach(self):
-    #     drink = Drink("coca-cola",2.00, False)
-    #     self.customer.add_to_stomach(drink)
-    #     self.assertEqual(,self.customer.stomach)
+    def test_add_drink_to_stomach(self):
+        drink = Drink("coca-cola",2.00, False)
+        self.customer.add_to_stomach(drink)
+        self.assertEqual(1,self.customer.stomach_count())
+
+    def test_add_drink_to_stomach(self):
+        drink_1 = Drink("Coca-cola", 2.00, False)
+        drink_2 = Drink("Sprite", 2.00, False)
+        self.customer.add_to_stomach(drink_1)
+        self.customer.add_to_stomach(drink_2)
+        self.assertEqual(2, self.customer.stomach_count())
+
