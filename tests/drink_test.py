@@ -5,4 +5,4 @@ from src.drink import Drink
 class TestDrink(unittest.TestCase):
 
     def setUp(self):
-        self.drink = Drink("lager", 4.00, True)
+        self.drink = Drink("lager", 4.00, True, 3)
