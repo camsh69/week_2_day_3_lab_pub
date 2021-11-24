@@ -24,3 +24,9 @@ class Pub:
         for item in self.drinks:
             if item["name"] == drink.name:
                 item["amount"] -= 1
+
+    def sell_drink(self, customer, drink):
+        customer.reduce_wallet(drink)
+        customer.add_to_stomach(drink)
+        customer.stomach_count()
+        self.increase_till(drink)
