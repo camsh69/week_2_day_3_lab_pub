@@ -7,10 +7,10 @@ class Pub:
     def increase_till(self, drink):
         self.till += drink.price
 
-    def check_stock(self, drink):
-        for item in self.drinks:
-            if item["name"] == drink:
-                return item["amount"]
+    def check_stock(self, drink_name):
+        for drink in self.drinks:
+            if drink["name"] == drink_name:
+                return drink["amount"]
         return None
 
     def add_drinks(self, drink, amount):
@@ -25,16 +25,12 @@ class Pub:
             if item["name"] == drink.name:
                 item["amount"] -= 1
 
-    def under_age_message(self):
-        return "Sorry, you're too young for booze"
-
     def sell_drink(self, customer, drink):
-        if self.check_stock(drink.name):
+        if self.check_stock(drink.name) != None:
             if customer.age < 18 and drink.alcoholic_status == True:
-                self.under_age_message()
+                return "Sorry, you're too young for booze"
             else:
                 customer.reduce_wallet(drink)
-                customer.add_to_stomach(drink)
                 customer.bought_drink(drink)
                 self.increase_till(drink)
                 self.remove_drink(drink)
