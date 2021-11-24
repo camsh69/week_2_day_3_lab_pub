@@ -6,3 +6,4 @@ class Pub:
 
     def increase_till(self,drink):
         self.till += drink.price 
+        
