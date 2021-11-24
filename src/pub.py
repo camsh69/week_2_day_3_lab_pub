@@ -19,3 +19,8 @@ class Pub:
             "amount": amount
         }
         self.drinks.append(stock)
+
+    def remove_drink(self, drink):
+        for item in self.drinks:
+            if item["name"] == drink.name:
+                item["amount"] -= 1

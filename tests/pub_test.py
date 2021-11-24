@@ -20,7 +20,19 @@ class TestPub(unittest.TestCase):
     def test_check_stock_is_empty(self):
         self.assertEqual(None, self.pub.check_stock("lager"))
 
-    def test_check_stock_amount(self):
+    def test_check_stock_amount_when_adding_drink(self):
         drink = Drink("stout", 4.00, True)
         self.pub.add_drinks(drink,5)
         self.assertEqual(5,self.pub.check_stock(drink.name))
+    
+    def test_check_stock_amount_when_removing_drink(self):
+        drink = Drink("stout", 4.00, True)
+        self.pub.add_drinks(drink,5)
+        self.pub.remove_drink(drink)
+        self.assertEqual(4,self.pub.check_stock(drink.name))
+
+
+
+
+
+
